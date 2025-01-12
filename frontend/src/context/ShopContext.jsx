@@ -9,6 +9,7 @@ const ShopContextProvider = (props)=>{
 
     const currency = '$'
     const delivery_fee = 10;
+    const backendURL = import.meta.env.BACKEND_URL;
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
     const [cartItems, setCartItems] = useState({});
@@ -16,7 +17,6 @@ const ShopContextProvider = (props)=>{
     // const [products, setProducts] = useState([]);
     
     const addToCart = async (itemId, size)=>{
-        console.log("Hellllo", size)
         if(!size){
             console.log("Here")
             toast.error('Select Product Size');
@@ -54,6 +54,32 @@ const ShopContextProvider = (props)=>{
             }
         }
         return totalCount;
+    }
+
+    const updateQuantity = async (itemId, size, quantity)=>{
+        let cartData = structuredClone(cartItems);
+
+        cartData[itemId][size] = quantity;
+
+        setCartItems(cartData);
+
+        if(token){
+            try{
+                await axios.post(backend + '/ugle/cart/update', {
+                    itemId,
+                    size,
+                    quantity
+                },{
+                    headers: {
+                        token
+                    }
+                })
+            }catch(e){
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
+
     }
 
     
