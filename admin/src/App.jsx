@@ -34,7 +34,7 @@ const App = () =>{
           <div className='flex w-full'>
             <Sidebar/>
 
-            <div>
+            <div className='w-70% mx-20 ml-[max(5vw, 25px)] my-8 text-gray-600 text-base'>
               <Routes>
                 <Route path='/add' element={<Add token={token}/> }/>
                 <Route path='/list' element={<List token={token}/>}/>

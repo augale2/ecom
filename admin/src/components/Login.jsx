@@ -5,7 +5,7 @@ import {backendUrl} from '../App'
 import {toast} from 'react-toastify'
 
 
-const Login = () => {
+const Login = ({setToken}) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -13,16 +13,17 @@ const Login = () => {
     const onSubmitHandler = async (e) =>{
         try{
             e.preventDefault();
-            const response = await axios.post(backendUrl + 'ugle/user/admin', {email,password});
+            console.log("Hello ", email, password)
+            const response = await axios.post(backendUrl + '/ugle/user/admin', {email,password});
+            console.log(response)
             if(response.data.success){
                 setToken(response.data.token);
             }else{
                 toast.error(response.data.message);
             }
-
         }catch(e){
             console.log(e);
-            toast.error(error.message)
+            toast.error(e.message)
         }
     }
 
@@ -45,8 +46,6 @@ const Login = () => {
                 <button className='mt-2 w-full py-2 px-4 rounded-md text-white bg-black' type="submit">Login</button>
 
             </form>
-
-
         </div>
       
     </div>
