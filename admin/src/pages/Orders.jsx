@@ -16,7 +16,7 @@ const Orders = ({token}) => {
 
     try{
 
-      const response = await axios.get(backendUrl + '/ugle/order/list',{}, {
+      const response = await axios.get(backendUrl + '/ugle/order/list', {
         headers: {
           token
         }
