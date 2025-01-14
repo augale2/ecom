@@ -4,7 +4,7 @@ import axios from 'axios'
 import {backendUrl} from '../App'
 import {toast} from 'react-toastify'
 
-const Add = () => {
+const Add = ({token}) => {
   
   const [image1, setImage1] = useState(false);
   const [image2, setImage2] = useState(false);

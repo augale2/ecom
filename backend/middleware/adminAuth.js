@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 const adminAuth = async (req,res,next) =>{
 
     try{
-        const {token } = req.heaaders;
+        const {token } = req.headers;
         if(!token){
             return res.json({
                 success: false,
@@ -20,7 +20,7 @@ const adminAuth = async (req,res,next) =>{
         console.log(e);
         res.json({
             success: false,
-            message: error.message
+            message: e.message
         })
     }
 
