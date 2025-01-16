@@ -6,14 +6,14 @@ const Footer = () => {
     <div>
         <div className='flex flex-col sm:grid grid-cols-[3fr_1fr_1fr] gap-14 my-10 mt-40 text-sm'>
             <div>
-                <p className='text-xl font-medium mb-5'>FOREVER</p>
+                <p className='text-xl text-[#990011] font-medium mb-5'>Ugle</p>
                 <p className='w-full md:w-3/4 text-gray-600'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum nisi quaerat at nam sequi ut suscipit cum nulla aut. Veritatis ullam eveniet pariatur doloremque. Delectus quibusdam eos ullam rerum doloremque?
                 </p>
             </div>
 
             <div>
-                <p className='text-xl font-medium mb-5'>
+                <p className='text-xl text-[#990011] font-medium mb-5'>
                     COMPANY
                 </p>
                 <ul className='flex flex-col gap-1 text-gray-600'>
@@ -25,7 +25,7 @@ const Footer = () => {
             </div>
 
             <div>
-                <p className='text-xl font-medium mb-5'>
+                <p className='text-xl text-[#990011] font-medium mb-5'>
                     GET IN TOUCH
                 </p>
                 <ul className='flex flex-col gap-1 text-gray-600'>
@@ -36,8 +36,8 @@ const Footer = () => {
 
         </div>
         <div>
-            <hr/>
-            <p className='py-5 text-sm text-center'>Copyright 2024 @ forever.com - All Rights Reserved</p>
+            <hr className='border-0 h-[1px] bg-[#660009]'/>
+            <p className='py-5 text-sm text-center'>Copyright @ Ugle - All Rights Reserved</p>
         </div>
 
       

@@ -3,6 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+input:-webkit-autofill {
+  background-color: white !important; /* Change to desired background color */
+  color: #660009 !important;         
+  border-color: #660009 !important;  
+  -webkit-text-fill-color: #660009 !important; 
+  transition: background-color 5000s ease-in-out 0s; 
+}
+
+
 *{
     font-family: Montserrat;
 }

@@ -16,7 +16,7 @@ const Subscription = () => {
         </p>
         <form onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border'>
             <input className='w-full sm:flex-1 outline-none pl-3' type='email' placeholder='Enter your email here...' required/>
-            <button className='bg-black text-white text-xs px-10 py-4'>SUBSCRIBE</button>
+            <button className='bg-[#990011] text-white text-xs px-10 py-4'>SUBSCRIBE</button>
         </form>
       
     </div>
