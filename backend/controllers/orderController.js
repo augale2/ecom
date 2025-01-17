@@ -1,6 +1,7 @@
 
 import orderModel from "../models/orderModel.js";
 import userModel from "../models/userModel.js";
+import mongoose from "mongoose";
 
 const allOrders = async (req, res)=>{
     try{
@@ -10,11 +11,11 @@ const allOrders = async (req, res)=>{
             orders
         })
 
-    }catch(error){
-        console.log(error);
+    }catch(e){
+        console.log(e);
         res.json({
             success: false,
-            message: error.message
+            message: e.message
         })
     }
 }
@@ -29,11 +30,11 @@ const userOrders = async (req,res)=>{
             orders
         })
 
-    }catch(error){
-        console.log(error);
+    }catch(e){
+        console.log(e);
         res.json({
             success: false,
-            message: error.message
+            message: e.message
         })
     }
 }
@@ -52,7 +53,7 @@ const placeOrder = async (req,res)=>{
             items, 
             address,
             amount,
-            paymenMethod: "COD",
+            paymentMethod: "COD",
             payment: false,
             date: Date.now()
         }
@@ -79,7 +80,7 @@ const placeOrder = async (req,res)=>{
         console.log(e);
         res.json({
             success: false,
-            message: error.message
+            message: e.message
         })
     }
 

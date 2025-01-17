@@ -22,7 +22,6 @@ const ShopContextProvider = (props)=>{
     
     const addToCart = async (itemId, size)=>{
         if(!size){
-            
             toast.error('Select Product Size');
             return;
         }
@@ -40,6 +39,21 @@ const ShopContextProvider = (props)=>{
             cartData[itemId][size] = 1;
         }
         setCartItems(cartData);
+
+        if(token){
+            try{
+                await axios.post(backendURL+ '/ugle/cart/add', {
+                    itemId,
+                    size
+                },{
+                    headers:{token}
+                })
+            }catch(e){
+                console.log(e)
+                toast.error(e)
+
+            }
+        }
     }
 
     const getCartCount = () => {
@@ -124,6 +138,7 @@ const ShopContextProvider = (props)=>{
             const response = await axios.post(backendURL + '/ugle/cart/get',{}, {
                 headers:{token}
             })
+            console.log(response)
             if(response.data.success){
                 setCartItems(response.data.cartData);
             }
@@ -143,6 +158,7 @@ const ShopContextProvider = (props)=>{
             setToken(localStorage.getItem('token'))
             getUserCart(localStorage.getItem('token'))
         }
+        console.log("Cartttttt", token)
 
         if(token){
             getUserCart(token);

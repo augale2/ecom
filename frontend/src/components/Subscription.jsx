@@ -8,10 +8,10 @@ const Subscription = () => {
 
   return (
     <div className='text-center'>
-        <p className='text-2xl font-medium text-gray-800'>
+        <p className='text-2xl font-medium text-[#990011]'>
             Subscribe now and get 15% off
         </p>
-        <p className='mt-3 text-gray-400'>
+        <p className='mt-3 text-gray-500'>
             Subscribe to our newsletter and get 15% off and free shipping on your first purchase.
         </p>
         <form onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border'>
