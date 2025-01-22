@@ -79,7 +79,7 @@ const getUserCart = async (req,res) =>{
         console.log(e);
         res.json({
             success: false,
-            message: error.message
+            message: e.message
         })
 
     }
