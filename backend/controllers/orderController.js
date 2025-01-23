@@ -179,7 +179,6 @@ const placeOrderStripe = async (req,res)=>{
     }catch(e){
         await sessionTr.abortTransaction();
         sessionTr.endSession();
-        console.log("Here - ");
         res.json({
             success: false,
             message: e.message
@@ -199,7 +198,7 @@ const verifyStripe = async (req,res)=>{
             res.json({success: false, message: "Payment Failed"})
         }
     }catch(e){
-        console.log("Nooo Here - ", e);
+        console.log(e);
         res.json({success: false, message: e.message})
     }
 }
@@ -230,19 +229,18 @@ const placeOrderRazorpay = async (req,res)=>{
             receipt: newOrder._id.toString()
         }
 
-        await razorpayInstance.orders.create(options, async (error, order)=>{
+        razorpayInstance.orders.create(options, async (error, order)=>{
             if(error){
                 console.log(error);
                 await sessionTr.abortTransaction();
                 sessionTr.endSession();
                 
-
-
                 return res.json({
                     success: false,
                     message: error
                 })
             }
+            console.log("After creating the order - ",order);
             await sessionTr.commitTransaction();
             sessionTr.endSession();
             
@@ -270,11 +268,13 @@ const verifyRazorpay = async (req,res)=>{
         const {userId, razorpay_order_id} = req.body;
 
         const orderInfo = await razorpayInstance.orders.fetch(razorpay_order_id)
+        console.log("Order Info here - ", orderInfo)
         if(orderInfo.status === 'paid'){
             await orderModel.findByIdAndUpdate(orderInfo.receipt, {payment:true});
             await userModel.findByIdAndUpdate(userId,{cartData:{}})
             res.json({ success: true, message: "Payment Successful" })
         }else{
+            console.log("Failed here\n");
             res.json({ success: false, message: 'Payment Failed' });
         }
     }catch(e){

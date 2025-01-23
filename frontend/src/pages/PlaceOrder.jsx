@@ -32,9 +32,9 @@ const PlaceOrder = () => {
       order_id: order.id,
       receipt: order.receipt,
       handler: async (response)=>{
-        console.log(response);
+        console.log("Handler response - ", response)
         try{
-          const { data } = await axios.post(backendURL + '/api/order/verifyRazorpay',response,{headers:{token}})
+          const { data } = await axios.post(backendURL + '/ugle/order/verifyRazorpay',response,{headers:{token}})
           if (data.success) {
             navigate('/orders')
             setCartItems({})

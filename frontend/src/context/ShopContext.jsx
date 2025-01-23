@@ -63,8 +63,6 @@ const ShopContextProvider = (props)=>{
         //     "item1": { "M": 2, "L": 1 },
         //     "item2": { "S": 3 }
         // };
-        console.log(cartItems);
-
         for(const items in cartItems){
             for(const item in cartItems[items]){
                 if(cartItems[items][item]>0){
@@ -116,10 +114,8 @@ const ShopContextProvider = (props)=>{
 
     const getProductsData = async ()=>{
         try{
-            console.log(backendURL)
 
             const response = await axios.get(backendURL + '/ugle/product/list');
-            console.log(response)
             if(response.data.success){
                 setProducts(response.data.products.reverse());
             }else{
@@ -138,7 +134,6 @@ const ShopContextProvider = (props)=>{
             const response = await axios.post(backendURL + '/ugle/cart/get',{}, {
                 headers:{token}
             })
-            console.log(response)
             if(response.data.success){
                 setCartItems(response.data.cartData);
             }
@@ -158,7 +153,6 @@ const ShopContextProvider = (props)=>{
             setToken(localStorage.getItem('token'))
             getUserCart(localStorage.getItem('token'))
         }
-        console.log("Cartttttt", token)
 
         if(token){
             getUserCart(token);

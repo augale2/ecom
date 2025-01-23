@@ -8,9 +8,7 @@ const List = ({token}) => {
 
   const fetchList = async () =>{
     try{
-
       const response = await axios.get(backendUrl + '/ugle/product/list');
-      console.log(response)
       if(response.data.success){
         setList(response.data.products.reverse());
       }else{
